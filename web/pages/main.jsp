@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.kirilo.jsp.TestConnection" %><%--
   Created by IntelliJ IDEA.
   User: Root
   Date: 08.08.2020
@@ -18,8 +18,12 @@
 <h3>
 	<%=request.getParameter("username") %>
 </h3>
+<%
+	TestConnection testConnection = new TestConnection();
+	testConnection.check();
+%>
 <h3>
-	${param["password"]}
+${param["password"]}
 </h3>
 </body>
 </html>
