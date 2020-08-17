@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean id="authorList" scope="request" class="com.kirilo.jsp.beans.AuthorList"/>
+<jsp:useBean id="authorList" scope="session" class="com.kirilo.jsp.beans.AuthorList"/>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
