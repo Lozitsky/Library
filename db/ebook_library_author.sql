@@ -1,0 +1,9 @@
+INSERT INTO ebook_library.author (full_name, birthday) VALUES ( 'name lastname', '1999-01-01');
+INSERT INTO ebook_library.author (full_name, birthday) VALUES ( 'name2 lastname2', '1999-02-02');
+INSERT INTO ebook_library.author (full_name, birthday) VALUES ( 'name3 lastname3', '1999-03-03');
+INSERT INTO ebook_library.author (full_name, birthday) VALUES ( 'name4 lastname4', '1999-04-04');
+INSERT INTO ebook_library.author (full_name, birthday) VALUES ( 'name5 lastname5', '1999-05-05');
+INSERT INTO ebook_library.author (full_name, birthday) VALUES ( 'name6 lastname6', '1999-06-06');
+INSERT INTO ebook_library.author (full_name, birthday) VALUES ( 'name7 lastname7', '1999-07-07');
+INSERT INTO ebook_library.author (full_name, birthday) VALUES ( 'name8 lastname8', '1999-08-08');
+INSERT INTO ebook_library.author (full_name, birthday) VALUES ( 'name9 lastname9', '1999-09-09');

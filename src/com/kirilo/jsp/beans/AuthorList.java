@@ -29,7 +29,7 @@ public class AuthorList {
         try (
                 Connection connection = Database.getConnection();
                 Statement statement = connection.createStatement();
-                ResultSet resultSet = statement.executeQuery("select * from author")
+                ResultSet resultSet = statement.executeQuery("select * from author order by full_name")
         ) {
 
             while (resultSet.next()) {

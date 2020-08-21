@@ -42,7 +42,6 @@ header, footer, #search > *, #main > * {
 }
 
 
-
 #search > #search-field {
     flex: 1 6 85%;
 }
@@ -60,6 +59,35 @@ header, footer {
     border-radius: 7pt;
     background: #ffeebb;
 }
+
+/* https://www.bestcssbuttongenerator.com/ */
+.modern-button {
+    box-shadow: 6px -1px 0px -6px #1bc2ba;
+    background: linear-gradient(to bottom, #45a4c7 5%, #2ab3bd 100%);
+    background-color: #45a4c7;
+    border-radius: 7pt;
+    border: 1px solid #197dab;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial, serif;
+    font-size: 17px;
+    font-weight: bold;
+    padding: 6px 20px;
+    text-decoration: none;
+    text-shadow: 5px 13px 28px #284166;
+}
+
+.modern-button:hover {
+    background: linear-gradient(to bottom, #2ab3bd 5%, #45a4c7 100%);
+    background-color: #2ab3bd;
+}
+
+.modern-button:active {
+    position: relative;
+    top: 1px;
+}
+
 
 @media all and (max-width: 640px) {
     #main, #page {

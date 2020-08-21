@@ -31,7 +31,7 @@
             <input id="search-field" type="text" name="search_string" value=""/>
 
             <div id="search-box">
-                <input type="submit" value="Search" name="search_button"/>
+                <input class="modern-button" type="submit" value="Search" name="search_button"/>
 
                 <select name="search_option">
                     <option>Title</option>

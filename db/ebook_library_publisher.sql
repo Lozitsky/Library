@@ -1,0 +1,9 @@
+INSERT INTO ebook_library.publisher (name) VALUES ('some publisher');
+INSERT INTO ebook_library.publisher (name) VALUES ('some publisher2');
+INSERT INTO ebook_library.publisher (name) VALUES ('some publisher3');
+INSERT INTO ebook_library.publisher (name) VALUES ('some publisher4');
+INSERT INTO ebook_library.publisher (name) VALUES ('some publisher5');
+INSERT INTO ebook_library.publisher (name) VALUES ('some publisher6');
+INSERT INTO ebook_library.publisher (name) VALUES ('some publisher7');
+INSERT INTO ebook_library.publisher (name) VALUES ('some publisher8');
+INSERT INTO ebook_library.publisher (name) VALUES ('some publisher9');
