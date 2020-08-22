@@ -2,7 +2,6 @@ package com.kirilo.jsp.beans;
 
 import com.kirilo.jsp.db.Database;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -27,8 +26,7 @@ public class PublisherList {
 
     private List<Publisher> getPublishersFromDB() {
         try (
-                Connection connection = Database.getConnection();
-                final Statement statement = connection.createStatement();
+                final Statement statement = (Database.getConnection()).createStatement();
                 final ResultSet resultSet = statement.executeQuery("select * from publisher")) {
             while (resultSet.next()) {
                 final Publisher publisher = new Publisher();

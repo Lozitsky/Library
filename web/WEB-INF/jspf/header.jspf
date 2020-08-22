@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>Online Library</title>
+    <link rel="stylesheet" href="../css/main.css" type="text/css">
+</head>
+<body>
+
+<header>
+    <img src="#" alt="Place for Logo" name="logo"/>
+</header>
+
+<div>
+    <form id="search" name="search_form" method="post">
+
+        <img id="search-logo" src="search.jpg" alt="Logo"/>
+
+        <input id="search-field" type="text" name="search_string" value=""/>
+
+        <div id="search-box">
+            <input class="modern-button" type="submit" value="Search" name="search_button"/>
+
+            <select name="search_option">
+                <option>Title</option>
+                <option>Author</option>
+            </select>
+        </div>
+    </form>
+</div>
+<div id="main">

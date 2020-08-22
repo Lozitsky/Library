@@ -63,8 +63,7 @@ header, footer {
 /* https://www.bestcssbuttongenerator.com/ */
 .modern-button {
     box-shadow: 6px -1px 0px -6px #1bc2ba;
-    background: linear-gradient(to bottom, #45a4c7 5%, #2ab3bd 100%);
-    background-color: #45a4c7;
+    background: #45a4c7 linear-gradient(to bottom, #45a4c7 5%, #2ab3bd 100%);
     border-radius: 7pt;
     border: 1px solid #197dab;
     display: inline-block;
@@ -79,8 +78,7 @@ header, footer {
 }
 
 .modern-button:hover {
-    background: linear-gradient(to bottom, #2ab3bd 5%, #45a4c7 100%);
-    background-color: #2ab3bd;
+    background: #2ab3bd linear-gradient(to bottom, #2ab3bd 5%, #45a4c7 100%);
 }
 
 .modern-button:active {

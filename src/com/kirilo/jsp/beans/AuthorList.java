@@ -27,8 +27,8 @@ public class AuthorList {
 
     private List<Author> getAuthorsFromDB() {
         try (
-                Connection connection = Database.getConnection();
-                Statement statement = connection.createStatement();
+//                Connection connection = Database.getConnection();
+                Statement statement = (Database.getConnection()).createStatement();
                 ResultSet resultSet = statement.executeQuery("select * from author order by full_name")
         ) {
 

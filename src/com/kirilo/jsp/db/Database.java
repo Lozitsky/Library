@@ -15,6 +15,9 @@ public class Database {
 
     public static Connection getConnection() {
         try {
+            if (connection != null) {
+                return connection;
+            }
             Context context = new InitialContext();
             DataSource ds = (DataSource) context.lookup("jdbc/Library");
             if (connection == null) {

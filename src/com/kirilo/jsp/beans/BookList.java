@@ -2,7 +2,6 @@ package com.kirilo.jsp.beans;
 
 import com.kirilo.jsp.db.Database;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -18,31 +17,45 @@ public class BookList {
         books = new ArrayList<>();
     }
 
-    public List<Book> getBooks() {
+    public List<Book> getAllBooks() {
         if (books.isEmpty()) {
-            books = getBooksDromDB();
+            books = getBooksFromDB("select * from book");
         }
         return books;
     }
 
-    private List<Book> getBooksDromDB() {
+    private List<Book> getBooksFromDB(String query) {
         try (
-                Connection connection = Database.getConnection();
-                final Statement statement = connection.createStatement();
-                final ResultSet resultSet = statement.executeQuery("select * from book")) {
+//                Connection connection = Database.getConnection();
+                Statement statement = (Database.getConnection()).createStatement();
+                ResultSet resultSet = statement.executeQuery(query)
+        ) {
             while (resultSet.next()) {
                 final Book book = new Book();
                 book.setName(resultSet.getString("name"));
                 book.setPageCount(resultSet.getInt("page_count"));
                 book.setIsbn(resultSet.getString("isbn"));
-                book.setGenre(resultSet.getString("genre_id"));
-                book.setGenre(resultSet.getString("author_id"));
+                book.setGenre(resultSet.getString("genre"));
+                book.setAuthor(resultSet.getString("author"));
                 book.setPublishYear(resultSet.getInt("publish_year"));
-                book.setPublisher(resultSet.getString("publisher_id"));
+                book.setPublisher(resultSet.getString("publisher"));
+                books.add(book);
             }
         } catch (SQLException throwables) {
             Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "Can't get books from DB!", throwables);
         }
         return books;
+    }
+
+    public List<Book> getBooksByGenre(int id) {
+        return getBooksFromDB(
+                "select b.id, b.name, b.page_count, b.isbn, b.publish_year, "
+                        + "g.name as genre, a.full_name as author, p.name as publisher from book b "
+                        + "inner join genre g on b.genre_id=g.id "
+                        + "inner join author a on b.author_id=a.id "
+                        + "inner join publisher p on b.publisher_id=p.id "
+                        + "where genre_id=" + id
+                        + " order by b.name"
+        );
     }
 }

@@ -2,7 +2,6 @@ package com.kirilo.jsp.beans;
 
 import com.kirilo.jsp.db.Database;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -27,13 +26,14 @@ public class GenreList {
 
     private List<Genre> getGenresFromDB() {
         try (
-                Connection connection = Database.getConnection();
-                final Statement statement = connection.createStatement();
-                final ResultSet resultSet = statement.executeQuery("select * from genre")
+//                Connection connection = Database.getConnection();
+                Statement statement = (Database.getConnection()).createStatement();
+                ResultSet resultSet = statement.executeQuery("select * from genre")
         ) {
             while (resultSet.next()) {
                 final Genre genre = new Genre();
                 genre.setName(resultSet.getString("name"));
+                genre.setId(resultSet.getInt("id"));
                 genres.add(genre);
             }
 

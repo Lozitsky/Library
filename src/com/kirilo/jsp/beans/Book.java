@@ -3,6 +3,7 @@ package com.kirilo.jsp.beans;
 import java.awt.*;
 
 public class Book {
+    private int id;
     private String name;
     private byte[] content;
     private int pageCount;
@@ -15,6 +16,17 @@ public class Book {
     private String description;
     private int rating;
     private int voteCount;
+
+    public Book() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
