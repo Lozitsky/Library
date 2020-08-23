@@ -28,28 +28,39 @@
 
 <c:set var="genreId" value="${param.genre_id}" scope="session"/>
 
-<div id="content">
+<div id="book_panel">
     <h3>${param.name}</h3>
-    <table cellpadding="30" style="font-size: 12px;">
+    <div id="content">
+        <%--    <table cellpadding="30" style="font-size: 12px;">--%>
         <jsp:useBean id="bookList" class="com.kirilo.jsp.beans.BookList" scope="request"/>
-        <%--                <c:forEach var="book" items="${bookList.allBooks}">--%>
+        <%--        <c:set var="img" value=""--%>
+        <%--        <c:forEach var="book" items="${bookList.allBooks}">--%>
         <c:forEach var="book" items="${bookList.getBooksByGenre(genreId)}">
-            <tr>
-                <td style="width:400px;height: 100px;">
-                    <p><c:out value=" ${book.name}"/></p>
-                    <p><strong>ISBN:</strong><c:out value=" ${book.isbn}"/></p>
+            <div class="book_info">
+
+                    <%--            <tr>--%>
+                    <%--                <td style="width:400px;height: 100px;">--%>
+                <p id="book_title"><c:out value=" ${book.name}"/></p>
+                <div id="book_image">
+                    <img src="${pageContext.servletContext.contextPath}/showImage?id=${book.id}"
+                         height="190" width="190" alt="Book Picture"/>
+                        <%--                    <img src="<%=request.getContextPath()%>/showImage?id=2" height="250" width="190"
+                                                 alt="Обложка"/>--%>
+                </div>
+
+                <div id="book_details"><p><strong>ISBN:</strong><c:out value=" ${book.isbn}"/></p>
                     <p><strong>Number of pages:</strong><c:out value=" ${book.pageCount}"/></p>
                     <p><strong>Author:</strong><c:out value=" ${book.author}"/></p>
                     <p><strong>Year of publication:</strong><c:out value=" ${book.publishYear}"/></p>
                     <p><strong>Publisher:</strong><c:out value=" ${book.publisher}"/></p>
                     <p style="margin:10px;"><a href="#">Read</a></p>
-                </td>
-                <td>
-                    picture
-                </td>
-            </tr>
-        </c:forEach>
+                </div>
+                    <%--                </td>--%>
 
+                    <%--            </tr>--%>
+            </div>
+
+        </c:forEach>
         <%--&lt;%&ndash;        <%
 
                     for (Book book : bookList.getBooksByGenre(genreId)) {
@@ -74,8 +85,10 @@
                 </tr>
                 <%}%> --%--%>
 
-    </table>
+        <%--    </table>--%>
+    </div>
 </div>
+
 
 </body>
 </html>

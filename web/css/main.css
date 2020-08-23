@@ -3,6 +3,10 @@ body {
     background: #999999;
 }
 
+h3 {
+    text-align: center;
+}
+
 #main {
     min-height: 800px;
     margin: 0px;
@@ -33,7 +37,7 @@ header, footer, #search > *, #main > * {
     flex: 1 6 25%;
 }
 
-#main > #content {
+#main > #book_panel {
     flex: 1 6 75%;
 }
 
@@ -58,6 +62,27 @@ header, footer {
     border: 1px solid #eebb55;
     border-radius: 7pt;
     background: #ffeebb;
+}
+
+#content {
+    display: flex;
+    flex-flow: wrap;
+}
+
+#content > .book_info {
+    flex: 1 6 33%;
+}
+
+#content > #book_title {
+
+}
+
+#content > #book_image {
+
+}
+
+#content > #book_details {
+
 }
 
 /* https://www.bestcssbuttongenerator.com/ */
@@ -88,7 +113,7 @@ header, footer {
 
 
 @media all and (max-width: 640px) {
-    #main, #page {
+    #main, #page, #content {
         /*-webkit-flex-flow: column;*/
         flex-direction: column;
     }

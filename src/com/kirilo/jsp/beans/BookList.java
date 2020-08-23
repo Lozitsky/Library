@@ -32,6 +32,7 @@ public class BookList {
         ) {
             while (resultSet.next()) {
                 final Book book = new Book();
+                book.setId(resultSet.getInt("id"));
                 book.setName(resultSet.getString("name"));
                 book.setPageCount(resultSet.getInt("page_count"));
                 book.setIsbn(resultSet.getString("isbn"));
