@@ -1,0 +1,10 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--<%@ page import="com.kirilo.jsp.enums.LangList" %>--%>
+<div class="letters">
+    <jsp:useBean id="letterList" class="com.kirilo.jsp.beans.LetterList" scope="session"/>
+    <jsp:setProperty name="letterList" property="lang" value="${'EN'}"/>
+    <c:forEach var="leter" items="#{letterList.chars}">
+        <a href="books.jsp?letter=${leter}">${leter}</a>
+    </c:forEach>
+
+</div>

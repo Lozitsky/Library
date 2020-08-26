@@ -30,6 +30,7 @@
 
 <div id="book_panel">
     <h3>${param.name}</h3>
+    <%@include file="../WEB-INF/jspf/letters.jspf" %>
     <div id="content">
         <%--    <table cellpadding="30" style="font-size: 12px;">--%>
         <jsp:useBean id="bookList" class="com.kirilo.jsp.beans.BookList" scope="request"/>

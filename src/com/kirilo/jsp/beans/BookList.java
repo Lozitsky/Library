@@ -1,6 +1,7 @@
 package com.kirilo.jsp.beans;
 
 import com.kirilo.jsp.db.Database;
+import com.kirilo.jsp.enums.SearchType;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -56,6 +57,30 @@ public class BookList {
                         + "inner join author a on b.author_id=a.id "
                         + "inner join publisher p on b.publisher_id=p.id "
                         + "where genre_id=" + id
+                        + " order by b.name"
+        );
+    }
+
+    public List<Book> getBooksByLetter(char c) {
+        return getBooksFromDB(
+                "select b.id, b.name, b.page_count, b.isbn, b.publish_year, "
+                        + "g.name as genre, a.full_name as author, p.name as publisher from book b "
+                        + "inner join genre g on b.genre_id=g.id "
+                        + "inner join author a on b.author_id=a.id "
+                        + "inner join publisher p on b.publisher_id=p.id "
+                        + "where b.name like '" + String.valueOf(c).toLowerCase() + "%'"
+                        + " order by b.name"
+        );
+    }
+
+    public List<Book> getBooksByString(String s, SearchType type) {
+        return getBooksFromDB(
+                "select b.id, b.name, b.page_count, b.isbn, b.publish_year, "
+                        + "g.name as genre, a.full_name as author, p.name as publisher from book b "
+                        + "inner join genre g on b.genre_id=g.id "
+                        + "inner join author a on b.author_id=a.id "
+                        + "inner join publisher p on b.publisher_id=p.id "
+                        + "where "+ (type==SearchType.AUTHOR?"author":"b.name") +" like '%" + s + "%'"
                         + " order by b.name"
         );
     }
