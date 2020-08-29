@@ -3,6 +3,19 @@ body {
     background: #999999;
 }
 
+.header {
+    display: flex;
+    /*margin: 1em;*/
+}
+
+/*.item {
+
+}*/
+
+.move-right {
+    margin-left: auto;
+}
+
 h3 {
     text-align: center;
 }
@@ -52,6 +65,7 @@ header, footer, #search > *, #main > * {
 
 #search > #search-box {
     flex: 1 6 20%;
+    min-width: 168px;
 }
 
 header, footer {
@@ -97,7 +111,7 @@ header, footer {
     font-family: Arial, serif;
     font-size: 17px;
     font-weight: bold;
-    padding: 6px 20px;
+    padding: 6px 18px;
     text-decoration: none;
     text-shadow: 5px 13px 28px #284166;
 }

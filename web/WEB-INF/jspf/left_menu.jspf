@@ -6,11 +6,5 @@
             <c:forEach var="genre" items="${genreList.genres}">
                 <li><a href="books.jsp?genre_id=${genre.id}&name=${genre.name}"><c:out value="${genre.name}"/></a></li>
             </c:forEach>
-<%--            <%
-                for (Genre genre : genreList.getGenres()) {
-            %>
-            <li><a href="books.jsp?genre_id=<%=genre.getId()%>&name=<%=genre.getName()%>"><%=genre.getName()%></a></li>
-
-            <%}%>--%>
         </ul>
     </nav>

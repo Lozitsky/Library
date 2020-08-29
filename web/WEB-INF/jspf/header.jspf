@@ -1,3 +1,6 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
     <title>Online Library</title>
@@ -5,12 +8,25 @@
 </head>
 <body>
 
-<header>
-    <img src="#" alt="Place for Logo" name="logo"/>
+<header class="header">
+    <img class="item" src="#" alt="Place for Logo" name="logo"/>
+    <strong class="item move-right">Hello, ${param.username}!</strong>
 </header>
 
 <div>
-    <form id="search" name="search_form" method="post">
+    <jsp:useBean id="bookList" class="com.kirilo.jsp.beans.BookList" scope="request"/>
+    <c:if test="${param.genre_id != null}">
+        <c:set var="list" value="${bookList.getBooksByGenre(param.genre_id)}" scope="request"/>
+    </c:if>
+    <c:if test="${param.letter != null}">
+        <c:set var="list" value="${bookList.getBooksByLetter(param.letter)}" scope="request"/>
+    </c:if>
+    <c:if test="${param.search_string != null}">
+        <c:set var="list" value="${bookList.getBooksByString(param.search_string, param.search_type)}"
+               scope="request"/>
+    </c:if>
+
+    <form id="search" name="search_form" method="get" action="books.jsp">
 
         <img id="search-logo" src="search.jpg" alt="Logo"/>
 
@@ -19,7 +35,7 @@
         <div id="search-box">
             <input class="modern-button" type="submit" value="Search" name="search_button"/>
 
-            <select name="search_option">
+            <select name="search_type">
                 <option>Title</option>
                 <option>Author</option>
             </select>

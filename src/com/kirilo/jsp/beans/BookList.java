@@ -73,14 +73,15 @@ public class BookList {
         );
     }
 
-    public List<Book> getBooksByString(String s, SearchType type) {
+    public List<Book> getBooksByString(String s, String type) {
+        final String s_type = (SearchType.valueOf(type.toUpperCase()) == SearchType.AUTHOR ? "a.full_name" : "b.name");
         return getBooksFromDB(
                 "select b.id, b.name, b.page_count, b.isbn, b.publish_year, "
                         + "g.name as genre, a.full_name as author, p.name as publisher from book b "
                         + "inner join genre g on b.genre_id=g.id "
                         + "inner join author a on b.author_id=a.id "
                         + "inner join publisher p on b.publisher_id=p.id "
-                        + "where "+ (type==SearchType.AUTHOR?"author":"b.name") +" like '%" + s + "%'"
+                        + "where "+ s_type +" like '%" + s + "%'"
                         + " order by b.name"
         );
     }

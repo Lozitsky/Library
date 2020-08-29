@@ -16,37 +16,16 @@
 
 <%@include file="../WEB-INF/jspf/left_menu.jspf" %>
 
-<%--<%
-    int genreId = 0;
-
-    try {
-        genreId = Integer.parseInt(request.getParameter("genre_id"));
-    } catch (Exception ex) {
-        ex.printStackTrace();
-    }
-%>--%>
-
-<c:set var="genreId" value="${param.genre_id}" scope="session"/>
-
 <div id="book_panel">
     <h3>${param.name}</h3>
     <%@include file="../WEB-INF/jspf/letters.jspf" %>
     <div id="content">
-        <%--    <table cellpadding="30" style="font-size: 12px;">--%>
-        <jsp:useBean id="bookList" class="com.kirilo.jsp.beans.BookList" scope="request"/>
-        <%--        <c:set var="img" value=""--%>
-        <%--        <c:forEach var="book" items="${bookList.allBooks}">--%>
-        <c:forEach var="book" items="${bookList.getBooksByGenre(genreId)}">
+        <c:forEach var="book" items="${list}">
             <div class="book_info">
-
-                    <%--            <tr>--%>
-                    <%--                <td style="width:400px;height: 100px;">--%>
                 <p id="book_title"><c:out value=" ${book.name}"/></p>
                 <div id="book_image">
                     <img src="${pageContext.servletContext.contextPath}/showImage?id=${book.id}"
                          height="190" width="190" alt="Book Picture"/>
-                        <%--                    <img src="<%=request.getContextPath()%>/showImage?id=2" height="250" width="190"
-                                                 alt="Обложка"/>--%>
                 </div>
 
                 <div id="book_details"><p><strong>ISBN:</strong><c:out value=" ${book.isbn}"/></p>
@@ -56,37 +35,8 @@
                     <p><strong>Publisher:</strong><c:out value=" ${book.publisher}"/></p>
                     <p style="margin:10px;"><a href="#">Read</a></p>
                 </div>
-                    <%--                </td>--%>
-
-                    <%--            </tr>--%>
             </div>
-
         </c:forEach>
-        <%--&lt;%&ndash;        <%
-
-                    for (Book book : bookList.getBooksByGenre(genreId)) {
-        //            for (Book book : bookList.getAllBooks()) {
-
-                %>
-                <tr>
-                    <td style="width:400px;height: 100px;">
-                        <p style="color:#378de5 ;font-weight: bold; font-size: 15px;"><%=book.getName()%>
-                        </p>
-                        <br><strong>ISBN:</strong> <%=book.getIsbn()%>
-                        <br><strong>Издательство:</strong> <%=book.getPublisher() %>
-
-                        <br><strong>Количество страниц:</strong> <%=book.getPageCount() %>
-                        <br><strong>Год издания:</strong> <%=book.getPublishYear() %>
-                        <br><strong>Автор:</strong> <%=book.getAuthor() %>
-                        <p style="margin:10px;"><a href="#">Читать</a></p>
-                    </td>
-                    <td style="width:150px;height: 100px;">
-                        картинка
-                    </td>
-                </tr>
-                <%}%> --%--%>
-
-        <%--    </table>--%>
     </div>
 </div>
 
