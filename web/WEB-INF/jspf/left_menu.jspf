@@ -1,10 +1,21 @@
 <%@ page import="com.kirilo.jsp.beans.Genre" %>
-    <nav>
-        <h4>Genres:</h4>
-        <ul class="nav">
-            <jsp:useBean id="genreList" scope="request" class="com.kirilo.jsp.beans.GenreList"/>
-            <c:forEach var="genre" items="${genreList.genres}">
-                <li><a href="books.jsp?genre_id=${genre.id}&name=${genre.name}"><c:out value="${genre.name}"/></a></li>
-            </c:forEach>
-        </ul>
-    </nav>
+<nav>
+    <h4>Genres:</h4>
+    <ul class="nav">
+        <jsp:useBean id="genreList" scope="request" class="com.kirilo.jsp.beans.GenreList"/>
+        <c:forEach var="genre" items="${genreList.genres}">
+            <c:choose>
+                <c:when test="${param.genre_id!=null && param.genre_id==genre.id}">
+                    <c:set var="color" value="red" scope="request"/>
+                </c:when>
+                <c:otherwise>
+                    <c:set var="color" value="black" scope="request"/>
+                </c:otherwise>
+            </c:choose>
+
+            <li><a style="color: ${color}" href="books.jsp?genre_id=${genre.id}&name=${genre.name}"><c:out
+                    value="${genre.name}"/></a>
+            </li>
+        </c:forEach>
+    </ul>
+</nav>

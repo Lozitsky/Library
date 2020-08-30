@@ -19,6 +19,8 @@
 <div id="book_panel">
     <h3>${param.name}</h3>
     <%@include file="../WEB-INF/jspf/letters.jspf" %>
+    <h5>Books found: ${list.size()}</h5>
+
     <div id="content">
         <c:forEach var="book" items="${list}">
             <div class="book_info">

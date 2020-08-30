@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <html>
 <head>
@@ -10,7 +11,10 @@
 
 <header class="header">
     <img class="item" src="#" alt="Place for Logo" name="logo"/>
-    <strong class="item move-right">Hello, ${param.username}!</strong>
+    <c:if test="${param.username!=null}">
+        <c:set var="user_name" value="${param.username}" scope="session"/>
+    </c:if>
+    <strong class="item move-right">Hello, ${sessionScope.user_name}!</strong>
 </header>
 
 <div>
@@ -22,7 +26,9 @@
         <c:set var="list" value="${bookList.getBooksByLetter(param.letter)}" scope="request"/>
     </c:if>
     <c:if test="${param.search_string != null}">
-        <c:set var="list" value="${bookList.getBooksByString(param.search_string, param.search_type)}"
+        <c:set var="search_atr" value="${param.search_string}" scope="session"/>
+        <c:set var="search_type_atr" value="${param.search_type}" scope="session"/>
+        <c:set var="list" value="${bookList.getBooksByString(search_atr, search_type_atr)}"
                scope="request"/>
     </c:if>
 
@@ -30,14 +36,16 @@
 
         <img id="search-logo" src="search.jpg" alt="Logo"/>
 
-        <input id="search-field" type="text" name="search_string" value=""/>
+        <input id="search-field" type="text" name="search_string" value="${sessionScope.search_atr}"/>
 
         <div id="search-box">
             <input class="modern-button" type="submit" value="Search" name="search_button"/>
-
+<%--            https://stackoverflow.com/questions/12008698/set-selected-option-on-existing-select-tag-with-jstl --%>
+            <c:set var="tipes" value="Title,Author" scope="session"/>
             <select name="search_type">
-                <option>Title</option>
-                <option>Author</option>
+                <c:forEach items="${fn:split(tipes, ',')}" var="type">
+                    <option value="${type}" ${search_type_atr == type ? 'selected' : ''}>${type}</option>
+                </c:forEach>
             </select>
         </div>
     </form>

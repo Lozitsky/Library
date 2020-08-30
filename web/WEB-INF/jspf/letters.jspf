@@ -3,8 +3,17 @@
 <div class="letters">
     <jsp:useBean id="letterList" class="com.kirilo.jsp.beans.LetterList" scope="session"/>
     <jsp:setProperty name="letterList" property="lang" value="${'EN'}"/>
-    <c:forEach var="leter" items="#{letterList.chars}">
-        <a href="books.jsp?letter=${leter}">${leter}</a>
+
+    <c:forEach var="letter" items="#{letterList.chars}">
+        <c:choose>
+            <c:when test="${param.letter!=null && param.letter==letter}">
+                <c:set var="color" value="red" scope="request"/>
+            </c:when>
+            <c:otherwise>
+                <c:set var="color" value="black" scope="request"/>
+            </c:otherwise>
+        </c:choose>
+        <a style="color: ${color}" href="books.jsp?letter=${letter}">${letter}</a>
     </c:forEach>
 
 </div>
