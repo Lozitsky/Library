@@ -28,8 +28,16 @@
         <servlet-name>ShowImage</servlet-name>
         <servlet-class>com.kirilo.jsp.servlets.ShowImage</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ReadPdf</servlet-name>
+        <servlet-class>com.kirilo.jsp.servlets.FileReadPdf</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ShowImage</servlet-name>
         <url-pattern>/showImage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReadPdf</servlet-name>
+        <url-pattern>/fileReadPdf</url-pattern>
     </servlet-mapping>
 </web-app>
