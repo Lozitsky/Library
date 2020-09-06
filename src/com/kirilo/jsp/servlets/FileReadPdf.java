@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+// http://javaonlineguide.net/2015/04/reading-pdf-file-binary-data-stored-in-mysql-database-using-servlet-display-in-browser.html
 public class FileReadPdf extends HttpServlet {
 /*    private static final long serialVersionUID = 1L;
 
@@ -26,6 +27,8 @@ public class FileReadPdf extends HttpServlet {
 
         resp.setContentType("application/pdf");
         resp.setHeader("Content-Disposition", "inline; filename=" + id + ".pdf");
+
+//        resp.getOutputStream().println("Back to rhe list");
 
         try (Statement statement = Database.getConnection().createStatement();
              final ResultSet resultSet = statement.executeQuery("select content from book where id=" + id)
