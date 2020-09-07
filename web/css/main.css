@@ -78,6 +78,24 @@ header, footer {
     background: #ffeebb;
 }
 
+#book_panel {
+    display: flex;
+    /*flex-flow: wrap;*/
+    flex-direction: column;
+    justify-content: flex-start;
+}
+#book_panel > #menu_link {
+/*    margin: 4px;
+    padding: 5px;*/
+    flex: 10 1 4%;
+
+}
+#book_panel > #pdf_book {
+    flex: 10 1 96%;
+    /*flex-basis: 100%;*/
+    /*align-self: stretch;*/
+}
+
 #content {
     display: flex;
     flex-flow: wrap;
@@ -125,10 +143,11 @@ header, footer {
     top: 1px;
 }
 
-
+/* https://stackoverflow.com/a/55097779/9586230 */
 @media all and (max-width: 640px) {
     #main, #page, #content {
         /*-webkit-flex-flow: column;*/
         flex-direction: column;
+        height: 100vh;
     }
 }

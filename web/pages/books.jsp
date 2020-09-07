@@ -36,7 +36,7 @@
                     <p><strong>Year of publication:</strong><c:out value=" ${book.publishYear}"/></p>
                     <p><strong>Publisher:</strong><c:out value=" ${book.publisher}"/></p>
                     <p style="margin:10px;">
-                        <a href="${pageContext.servletContext.contextPath}/fileReadPdf?id=${book.id}">
+                        <a href="book_pdf.jsp?id=${book.id}">
                             Read</a></p>
                 </div>
             </div>
