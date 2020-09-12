@@ -4,32 +4,38 @@
 
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="../../css/main.css"/>
     <title>Online Library</title>
     <link rel="stylesheet" href="../css/main.css" type="text/css">
 </head>
 <body>
-
+<%-- https://stackoverflow.com/a/14505934/9586230 --%>
 <header class="header">
     <img class="item" src="#" alt="Place for Logo" name="logo"/>
     <c:if test="${param.username!=null}">
         <c:set var="user_name" value="${param.username}" scope="session"/>
     </c:if>
-    <strong class="item move-right">Hello, ${sessionScope.user_name}!</strong>
+    <div class="item move-right">
+        <strong>Hello, ${empty sessionScope.user_name ? 'noname' : sessionScope.user_name}!</strong>
+        <div class="move-right">
+            <a id="exit_link" href="${pageContext.request.contextPath}/exit">Exit</a>
+        </div>
+    </div>
 </header>
 
 <div>
     <jsp:useBean id="bookList" class="com.kirilo.jsp.beans.BookList" scope="request"/>
     <c:if test="${param.genre_id != null}">
-        <c:set var="list" value="${bookList.getBooksByGenre(param.genre_id)}" scope="request"/>
+        <c:set var="list" value="${bookList.getBooksByGenre(param.genre_id)}" scope="session"/>
     </c:if>
     <c:if test="${param.letter != null}">
-        <c:set var="list" value="${bookList.getBooksByLetter(param.letter)}" scope="request"/>
+        <c:set var="list" value="${bookList.getBooksByLetter(param.letter)}" scope="session"/>
     </c:if>
     <c:if test="${param.search_string != null}">
         <c:set var="search_atr" value="${param.search_string}" scope="session"/>
         <c:set var="search_type_atr" value="${param.search_type}" scope="session"/>
         <c:set var="list" value="${bookList.getBooksByString(search_atr, search_type_atr)}"
-               scope="request"/>
+               scope="session"/>
     </c:if>
 
     <form id="search" name="search_form" method="get" action="books.jsp">
@@ -40,7 +46,7 @@
 
         <div id="search-box">
             <input class="modern-button" type="submit" value="Search" name="search_button"/>
-<%--            https://stackoverflow.com/questions/12008698/set-selected-option-on-existing-select-tag-with-jstl --%>
+            <%--            https://stackoverflow.com/questions/12008698/set-selected-option-on-existing-select-tag-with-jstl --%>
             <c:set var="tipes" value="Title,Author" scope="session"/>
             <select name="search_type">
                 <c:forEach items="${fn:split(tipes, ',')}" var="type">

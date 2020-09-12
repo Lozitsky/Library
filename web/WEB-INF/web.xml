@@ -36,6 +36,10 @@
         <servlet-name>ReadPdf</servlet-name>
         <servlet-class>com.kirilo.jsp.servlets.ITextFileReaderPdf</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Reset</servlet-name>
+        <servlet-class>com.kirilo.jsp.servlets.ResetSession</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ShowImage</servlet-name>
         <url-pattern>/showImage</url-pattern>
@@ -43,5 +47,9 @@
     <servlet-mapping>
         <servlet-name>ReadPdf</servlet-name>
         <url-pattern>/fileReadPdf</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Reset</servlet-name>
+        <url-pattern>/exit</url-pattern>
     </servlet-mapping>
 </web-app>

@@ -8,9 +8,14 @@ body {
     /*margin: 1em;*/
 }
 
-/*.item {
+.item {
+    display: flex;
+    flex-flow: column;
+}
 
-}*/
+#exit_link {
+    /*flex-flow: column;*/
+}
 
 .move-right {
     margin-left: auto;
@@ -38,7 +43,11 @@ h3 {
     flex-flow: row;
 }
 
-header, footer, #search > *, #main > * {
+#footer {
+    flex-flow: row;
+}
+
+header, #search > *, #main > *, footer {
     margin: 4px;
     padding: 5px;
     border-radius: 7pt;
@@ -84,12 +93,14 @@ header, footer {
     flex-direction: column;
     justify-content: flex-start;
 }
+
 #book_panel > #menu_link {
-/*    margin: 4px;
-    padding: 5px;*/
+    /*    margin: 4px;
+        padding: 5px;*/
     flex: 10 1 4%;
 
 }
+
 #book_panel > #pdf_book {
     flex: 10 1 96%;
     /*flex-basis: 100%;*/
@@ -109,6 +120,7 @@ header, footer {
 
 }
 
+
 #content > #book_image {
 
 }
@@ -118,6 +130,7 @@ header, footer {
 }
 
 /* https://www.bestcssbuttongenerator.com/ */
+
 .modern-button {
     box-shadow: 6px -1px 0px -6px #1bc2ba;
     background: #45a4c7 linear-gradient(to bottom, #45a4c7 5%, #2ab3bd 100%);
@@ -148,6 +161,17 @@ header, footer {
     #main, #page, #content {
         /*-webkit-flex-flow: column;*/
         flex-direction: column;
-        height: 100vh;
+        /*height: 100vh;*/
     }
+/*    #pdf_book{
+        margin: 0;
+        flex: 10 1 100%;
+        height: 100vh;
+    }*/
+    #book_panel > #menu_link {
+        flex: 0;
+    }
+
+
 }
+

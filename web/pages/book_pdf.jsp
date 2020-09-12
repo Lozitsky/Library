@@ -9,7 +9,7 @@
 
 <div id="book_panel">
     <div id="menu_link">
-        <a href="main.jsp"><<=Menu</a>
+        <a href="books.jsp"><<=Back to list</a>
     </div>
     <object id="pdf_book" data="${pageContext.request.contextPath}/fileReadPdf?id=${param.id}" type="application/pdf"
             width="auto"
